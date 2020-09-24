@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block conteudo %}
+
+        <h2 class="mt-5">Dados pessoais</h2>
+        <dl>
+            <dt>Nome</dt>
+            <dd>{{ estagiario.nome }}</dd>
+
+            <dt>ID</dt>
+            <dd>{{ estagiario.id }}</dd>
+
+            <dt>Email</dt>
+            <dd>{{ estagiario.email }}</dd>
+
+            <dt>Telefone</dt>
+            <dd>{{ estagiario.telefone }}</dd>
+
+            <dt>Data de nascimento</dt>
+            <dd>{{ estagiario.dt_nascimento }}</dd>
+        </dl>
+
+        <h2 class="mt-5">Dados do estágio</h2>
+        <dl>
+            <dt>Orgão</dt>
+            <dd>{{ estagiario.orgao }}</dd>
+
+            <dt>Setor</dt>
+            <dd>{{ estagiario.setor }}</dd>
+
+            <dt>Número do contrato</dt>
+            <dd>{{ estagiario.n_contrato }}</dd>
+
+            <dt>Descrição do contrato</dt>
+            <dd>{{ estagiario.contrato }}</dd>
+
+            <dt>Inicio do contrato</dt>
+            <dd>{{ estagiario.inicio_contrato }}</dd>
+
+            <dt>Fim do contrato</dt>
+            <dd>{{ estagiario.fim_contrato }}</dd>
+
+            <dt>Status</dt>
+            {% if estagiario.status == True %}
+            <dd>Ativo</dd>
+            {% endif %}
+
+            {% if estagiario.status == False %}
+            <dd>Inativo</dd>
+            {% endif %}
+
+            <dt>Data de cadastro</dt>
+            <dd>{{ estagiario.dt_cadastro }}</dd>
+        </dl>
+
+        <h2 class="mt-5">Dados acadêmicos</h2>
+        <dl>
+            <dt>Instituição de ensino</dt>
+            <dd>{{ estagiario.instituicao_edu }}</dd>
+
+            <dt>Curso</dt>
+            <dd>{{ estagiario.curso }}</dd>
+        </dl>
+
+        <a href="{% url 'editar_estagiario' estagiario.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar"></a>
+
+{% endblock %}
