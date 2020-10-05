@@ -1,6 +1,6 @@
 class Estagiario():
     def __init__(self, nome, email, telefone, dt_nascimento, orgao, setor, dt_cadastro, status, contrato,
-                 n_contrato, inicio_contrato, fim_contrato, instituicao_edu, curso):
+                 n_contrato, inicio_contrato, fim_contrato, instituicao_edu, curso, documento):
         self.__nome = nome
         self.__email = email
         self.__telefone = telefone
@@ -15,6 +15,7 @@ class Estagiario():
         self.__fim_contrato = fim_contrato
         self.__instituicao_edu = instituicao_edu
         self.__curso = curso
+        self.__documento = documento
 
     @property
     def nome(self):
@@ -152,5 +153,14 @@ class Estagiario():
     @curso.setter
     def curso(self, curso):
         self.__curso = curso
+
+    #######################
+
+    @property
+    def documento(self):
+        return self.__documento
+    @documento.setter
+    def documento(self, documento):
+        self.__documento = documento
 
     #######################

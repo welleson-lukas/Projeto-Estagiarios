@@ -4,7 +4,7 @@ def cadastrar_estagiario(estagiario):
     Estagiario.objects.create(nome=estagiario.nome, email=estagiario.email, telefone=estagiario.telefone, dt_nascimento=estagiario.dt_nascimento,
                               orgao=estagiario.orgao, setor=estagiario.setor, dt_cadastro=estagiario.dt_cadastro, status=estagiario.status,
                               contrato=estagiario.contrato, n_contrato=estagiario.n_contrato, inicio_contrato=estagiario.inicio_contrato,
-                              fim_contrato=estagiario.fim_contrato, instituicao_edu=estagiario.instituicao_edu, curso=estagiario.curso)
+                              fim_contrato=estagiario.fim_contrato, instituicao_edu=estagiario.instituicao_edu, curso=estagiario.curso, documento=estagiario.documento)
 
 def listar_estagiario_id(id):
     return Estagiario.objects.get(id=id)

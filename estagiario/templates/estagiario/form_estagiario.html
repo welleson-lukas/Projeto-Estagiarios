@@ -43,6 +43,7 @@
             <label>Descrição do contrato</label>
             {{ form_estagiario.contrato|addclass:'form-control' }}
         </div>
+
         <div class="form-group">
             {{ form_estagiario.n_contrato.errors }}
             <label>Número do contrato (CIEE)</label>
@@ -58,11 +59,13 @@
             <label>Fim do contrato</label>
             {{ form_estagiario.fim_contrato|addclass:'form-control date-mask' }}
         </div>
+
         <div class="form-group">
             {{ form_estagiario.instituicao_edu.errors }}
             <label>Instituição de ensino</label>
             {{ form_estagiario.instituicao_edu|addclass:'form-control' }}
         </div>
+
         <div class="form-group">
             {{ form_estagiario.curso.errors }}
             <label>Curso</label>
@@ -79,4 +82,9 @@
         </div>
     </form>
 
+<script>
+$(document).ready(function() {
+    $('#estado').select2();
+});
+</script>
 {% endblock conteudo %}

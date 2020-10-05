@@ -30,11 +30,11 @@ def cadastrar_estagiario(request):
             fim_contrato = form_estagiario.cleaned_data["fim_contrato"]
             instituicao_edu = form_estagiario.cleaned_data["instituicao_edu"]
             curso = form_estagiario.cleaned_data["curso"]
-
+            documento = form_estagiario.cleaned_data["documento"]
             estagiario_novo = Estagiario(nome=nome, email=email, telefone=telefone, dt_nascimento=dt_nascimento,
                                          orgao=orgao, setor=setor, status=status, contrato=contrato,
                                          n_contrato=n_contrato, inicio_contrato=inicio_contrato, fim_contrato=fim_contrato,
-                                         instituicao_edu=instituicao_edu, curso=curso)
+                                         instituicao_edu=instituicao_edu, curso=curso, documento=documento)
 
             estagiario_service.cadastrar_estagiario(estagiario_novo)
             return redirect('index')
@@ -59,11 +59,11 @@ def editar_estagiario(request, id):
         fim_contrato = form_estagiario.cleaned_data["fim_contrato"]
         instituicao_edu = form_estagiario.cleaned_data["instituicao_edu"]
         curso = form_estagiario.cleaned_data["curso"]
-
+        documento = form_estagiario.cleaned_data["documento"]
         estagiario_novo = Estagiario(nome=nome, email=email, telefone=telefone, dt_nascimento=dt_nascimento,
                                      orgao=orgao, setor=setor, status=status, contrato=contrato,
                                      n_contrato=n_contrato, inicio_contrato=inicio_contrato, fim_contrato=fim_contrato,
-                                     instituicao_edu=instituicao_edu, curso=curso)
+                                     instituicao_edu=instituicao_edu, curso=curso, documento=documento)
         estagiario_service.editar_estagiario(estagiario_bd, estagiario_novo)
         return redirect('index')
     return render(request, 'estagiario/form_estagiario.html', {"form_estagiario": form_estagiario})
