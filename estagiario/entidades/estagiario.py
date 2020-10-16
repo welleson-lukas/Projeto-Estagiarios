@@ -1,6 +1,6 @@
 class Estagiario():
-    def __init__(self, nome, email, telefone, dt_nascimento, orgao, setor, dt_cadastro, status, contrato,
-                 n_contrato, inicio_contrato, fim_contrato, instituicao_edu, curso, documento):
+    def __init__(self, nome, email, telefone, dt_nascimento, orgao, setor, dt_cadastro, status, contrato, documento,
+                 n_contrato, inicio_contrato, fim_contrato, instituicao, curso):
         self.__nome = nome
         self.__email = email
         self.__telefone = telefone
@@ -10,12 +10,12 @@ class Estagiario():
         self.__dt_cadastro = dt_cadastro
         self.__status = status
         self.__contrato = contrato
+        self.__documento = documento
         self.__n_contrato = n_contrato
         self.__inicio_contrato = inicio_contrato
         self.__fim_contrato = fim_contrato
-        self.__instituicao_edu = instituicao_edu
+        self.__instituicao = instituicao
         self.__curso = curso
-        self.__documento = documento
 
     @property
     def nome(self):
@@ -107,6 +107,16 @@ class Estagiario():
     #######################
 
     @property
+    def documento(self):
+        return self.__documento
+
+    @documento.setter
+    def documento(self, documento):
+        self.__documento = documento
+
+    #######################
+
+    @property
     def n_contrato(self):
         return self.__n_contrato
 
@@ -137,12 +147,12 @@ class Estagiario():
     #######################
 
     @property
-    def instituicao_edu(self):
-        return self.__instituicao_edu
+    def instituicao(self):
+        return self.__instituicao
 
-    @instituicao_edu.setter
-    def instituicao_edu(self, instituicao_edu):
-        self.__instituicao_edu = instituicao_edu
+    @instituicao.setter
+    def instituicao(self, instituicao):
+        self.__instituicao = instituicao
 
     #######################
 
@@ -153,14 +163,5 @@ class Estagiario():
     @curso.setter
     def curso(self, curso):
         self.__curso = curso
-
-    #######################
-
-    @property
-    def documento(self):
-        return self.__documento
-    @documento.setter
-    def documento(self, documento):
-        self.__documento = documento
 
     #######################

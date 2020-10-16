@@ -2,13 +2,13 @@
 
 {% block conteudo %}
     <br>
-    <div class="col-md-12">
-        <table class="table table-bordered" style="background-color: #DCDCDC">
-            <div class="d-flex justify-content-center" style="background-color: #1b3280; color: #FFFFFF">Estagiários</div>
-            <thead style="background-color: #A9A9A9">
+        <table class="table table-bordered text-center">
+            <div class="d-flex justify-content-center color">Estagiários</div>
+            <thead class="subtabela">
                 <tr>
                     <th scope="col">Contrato</th>
                     <th scope="col">Nome</th>
+                    <th scope="col">Curso</th>
                     <th scope="col">Inicio</th>
                     <th scope="col">Término</th>
                     <th scope="col">Situação</th>
@@ -18,32 +18,27 @@
             <tbody>
                 {% for estagiario in estagiarios %}
                 <tr>
-
-
-                    <td>{{ estagiario.n_contrato }}</td></th>
+                    <td>{{ estagiario.n_contrato }}</td>
                     <td>{{ estagiario.nome }}</td>
+                    <td>{{ estagiario.curso }}</td>
                     <td>{{ estagiario.inicio_contrato }}</td>
                     <td>{{ estagiario.fim_contrato }}</td>
 
                     {% if estagiario.status == True %}
-                    <td>Ativo</td>
+                    <td class="on"><strong>Ativo</strong></td>
                     {% endif %}
 
                     {% if estagiario.status == False %}
-                    <td>Inativo</td>
+                    <td class="off"><strong>Inativo</strong></td>
                     {% endif %}
-
                     <td><a href="{% url 'exibir_estagiario' estagiario.id %}">Detalhes</a></td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
-    </div>
 
     <a href="{% url 'cadastrar_estagiario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>
-
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#alertaModal">teste modal</button>
-
           <!-- MODAL ALERTA -->
           <div class="modal fade" id="alertaModal" tabindex="-1" role="dialog">
               <div class="modal-dialog" role="document">
@@ -65,5 +60,5 @@
                   </div>
               </div>
           </div>
-    </select>
+
   {% endblock %}

@@ -34,6 +34,9 @@
             <dt>Descrição do contrato</dt>
             <dd>{{ estagiario.contrato }}</dd>
 
+            <dt>Contrato</dt>
+           <a href="{{ estagiario.documento.url }}" target="_blank">Vizualizar Contrato</a>
+
             <dt>Inicio do contrato</dt>
             <dd>{{ estagiario.inicio_contrato }}</dd>
 
@@ -56,7 +59,7 @@
         <h2 class="mt-5">Dados acadêmicos</h2>
         <dl>
             <dt>Instituição de ensino</dt>
-            <dd>{{ estagiario.instituicao_edu }}</dd>
+            <dd>{{ estagiario.instituicao }}</dd>
 
             <dt>Curso</dt>
             <dd>{{ estagiario.curso }}</dd>

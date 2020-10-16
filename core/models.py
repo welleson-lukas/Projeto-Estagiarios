@@ -13,3 +13,15 @@ class Setor(models.Model):
 
     def __str__(self):
         return self.nome_setor
+
+class Instituicao(models.Model):
+    nome_instituicao = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nome da instituicao')
+
+    def __str__(self):
+        return self.nome_instituicao
+
+class Curso(models.Model):
+    nome_curso = models.CharField(max_length=100, blank=False, null=False, verbose_name='Nome do curso')
+
+    def __str__(self):
+        return self.nome_curso
