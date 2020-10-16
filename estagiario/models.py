@@ -17,6 +17,7 @@ class Estagiario(models.Model):
     fim_contrato = models.DateField(blank=False, null=False, verbose_name='Data de término')
     instituicao_edu = models.CharField(max_length=200, blank=False, null=False, verbose_name='Instituição de ensino')
     curso = models.CharField(max_length=200, blank=False, null=True, verbose_name='Curso')
+    documento = models.FileField(upload_to='media', null=True, verbose_name='Documento')
 
     def __str__(self):
         return self.nome

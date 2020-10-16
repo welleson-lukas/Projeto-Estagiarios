@@ -1,0 +1,54 @@
+html {
+    height: 100%;
+    min-height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+}
+/*nav*/
+.navcima{
+   background-color: #1b3280;
+    color: #FFF;
+    height: 66px;
+}
+.padraocores{
+    color: white;
+}
+
+/*tabela*/
+.color{
+    background-color: #1b3280;
+    color: #FFFFFF;
+    padding: 10px;
+}
+.subtabela{
+    background-color: #A9A9A9;
+}
+
+.on{
+    color: green;
+}
+.off{
+    color: red;
+}
+/*rodape*/
+footer {
+    margin-top: auto;
+    margin-top: auto;
+    background-color: #1b3280;
+    position:relative;
+    width:100%;
+    padding: 30px 0px;
+    line-height: 1.15;
+    text-align: center;
+    border: 0;
+    height: auto;
+}
+.cores{
+    color: #FFFFFF;
+}
+
+

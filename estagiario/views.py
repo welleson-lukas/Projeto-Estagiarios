@@ -1,17 +1,43 @@
+from datetime import date, timedelta
+
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic import ListView
+
 from estagiario.models import Estagiario
 from .entidades import estagiario
 from .services import estagiario_service
 from .forms import EstagiarioForm
 
-def index(request):
-    estagiarios = Estagiario.objects.all()
-    return render(request, 'estagiario/index.html', {'estagiarios': estagiarios})
 
-def alertacontrato(request):
-    contrato_estagio = Estagiario.objects.all()
-    return render(request, 'estagiario/index.html', {'contrato_estagio': contrato_estagio})
+class EstagiarioIndex(ListView):
+    model = Estagiario
+    template_name = 'estagiario/index.html'
+    context_object_name = 'estagiarios'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('-id').filter(status=True)
+
+        return qs
+
+class EstagiarioInativos(ListView):
+    model = Estagiario
+    template_name = 'estagiario/inativos.html'
+    context_object_name = 'estagiarios'
+
+    def get_queryset(self):
+        qs = super().get_queryset()
+        qs = qs.order_by('-id').filter(status=False)
+
+        return qs
+
+def contrato(request):
+    data_limite = date.today() + timedelta(days=10)
+    data_atual = date.today()
+    estagiarios = Estagiario.objects.all()
+    return render(request, 'estagiario/index.html', {'estagiarios': estagiarios, 'data_limite': data_limite, 'data_atual': data_atual})
+
 
 def cadastrar_estagiario(request):
     if request.method == "POST":
@@ -25,6 +51,7 @@ def cadastrar_estagiario(request):
             setor = form_estagiario.cleaned_data["setor"]
             status = form_estagiario.cleaned_data["status"]
             contrato = form_estagiario.cleaned_data["contrato"]
+            documento = form_estagiario.cleaned_data["documento"]
             n_contrato = form_estagiario.cleaned_data["n_contrato"]
             inicio_contrato = form_estagiario.cleaned_data["inicio_contrato"]
             fim_contrato = form_estagiario.cleaned_data["fim_contrato"]
@@ -32,7 +59,7 @@ def cadastrar_estagiario(request):
             curso = form_estagiario.cleaned_data["curso"]
 
             estagiario_novo = Estagiario(nome=nome, email=email, telefone=telefone, dt_nascimento=dt_nascimento,
-                                         orgao=orgao, setor=setor, status=status, contrato=contrato,
+                                         orgao=orgao, setor=setor, status=status, contrato=contrato, documento=documento,
                                          n_contrato=n_contrato, inicio_contrato=inicio_contrato, fim_contrato=fim_contrato,
                                          instituicao_edu=instituicao_edu, curso=curso)
 
@@ -54,6 +81,7 @@ def editar_estagiario(request, id):
         setor = form_estagiario.cleaned_data["setor"]
         status = form_estagiario.cleaned_data["status"]
         contrato = form_estagiario.cleaned_data["contrato"]
+        documento = form_estagiario.cleaned_data["documento"]
         n_contrato = form_estagiario.cleaned_data["n_contrato"]
         inicio_contrato = form_estagiario.cleaned_data["inicio_contrato"]
         fim_contrato = form_estagiario.cleaned_data["fim_contrato"]
@@ -61,7 +89,7 @@ def editar_estagiario(request, id):
         curso = form_estagiario.cleaned_data["curso"]
 
         estagiario_novo = Estagiario(nome=nome, email=email, telefone=telefone, dt_nascimento=dt_nascimento,
-                                     orgao=orgao, setor=setor, status=status, contrato=contrato,
+                                     orgao=orgao, setor=setor, status=status, contrato=contrato, documento=documento,
                                      n_contrato=n_contrato, inicio_contrato=inicio_contrato, fim_contrato=fim_contrato,
                                      instituicao_edu=instituicao_edu, curso=curso)
         estagiario_service.editar_estagiario(estagiario_bd, estagiario_novo)

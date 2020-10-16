@@ -2,12 +2,9 @@
 
 {% block conteudo %}
     <br>
-    <div class="alert alert-danger" role="alert">
+    <h3>Estagiarios Inativos</h3>
+    <br>
 
-    </div>
-    {% if estagiarios %}
-
-    {% endif %}
     <div class="col-md-12">
         <table class="table table-bordered" style="background-color: #DCDCDC">
             <div class="d-flex justify-content-center" style="background-color: #1b3280; color: #FFFFFF">Estagiários</div>
@@ -24,7 +21,6 @@
             <tbody>
                 {% for estagiario in estagiarios %}
                 <tr>
-
 
                     <td>{{ estagiario.n_contrato }}</td></th>
                     <td>{{ estagiario.nome }}</td>
@@ -50,11 +46,8 @@
     </div>
 
     <div class="">
-        <h5>Estagiários Ativos: {{ estagiarios.count }}</h5>
+        <h5>Estagiários Inativos: {{ estagiarios.count }}</h5>
     </div>
 
-
-
-    <a href="{% url 'cadastrar_estagiario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>
 
   {% endblock %}
