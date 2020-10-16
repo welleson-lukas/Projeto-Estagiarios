@@ -53,6 +53,9 @@
         <h5>Estagiários Ativos: {{ estagiarios.count }}</h5>
     </div>
 
+    <div class="">
+        <a href="{% url 'inativos' %}"><h5>Exibir Estagiários Inativos</h5></a>
+    </div>
 
 
     <a href="{% url 'cadastrar_estagiario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>

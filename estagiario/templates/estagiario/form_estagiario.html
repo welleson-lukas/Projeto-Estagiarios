@@ -3,7 +3,7 @@
 
 {% block conteudo %}
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <br>
         <h2>Cadastro de estagiário</h2>
@@ -67,15 +67,18 @@
             {{ form_estagiario.fim_contrato|addclass:'form-control date-mask' }}
         </div>
 
-     <label>Instituição de Ensino</label>
-          <select class="form-group" id="instituicao" style="width: 100%" name="state">
-              <option value={{ form_estagiario.instituicao }}> </option>
-          </select>
+        <div class="form-group">
+            {{ form_estagiario.instituicao_edu.errors }}
+            <label>Instituição</label>
+            {{ form_estagiario.instituicao_edu|addclass:'form-control' }}
+        </div>
 
-        <label>Curso</label>
-      <select class="form-group" id="curso" style="width: 100%" name="state">
-          <option value=" {{ form_estagiario.curso }} "></option>
-      </select>
+        <div class="form-group">
+            {{ form_estagiario.curso.errors }}
+            <label>Curso</label>
+            {{ form_estagiario.curso|addclass:'form-control' }}
+        </div>
+
 
 
         <div class="form-group">
@@ -87,7 +90,7 @@
         </div>
 
         <div class="form-group">
-            <input type="submit" value="Salvar">
+            <input type="submit" class="btn btn-primary" value="Salvar">
         </div>
 
     </form>
