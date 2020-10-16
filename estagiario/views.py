@@ -62,6 +62,7 @@ def editar_estagiario(request, id):
         setor = form_estagiario.cleaned_data["setor"]
         status = form_estagiario.cleaned_data["status"]
         contrato = form_estagiario.cleaned_data["contrato"]
+        documento = form_estagiario.cleaned_data["contrato"]
         n_contrato = form_estagiario.cleaned_data["n_contrato"]
         inicio_contrato = form_estagiario.cleaned_data["inicio_contrato"]
         fim_contrato = form_estagiario.cleaned_data["fim_contrato"]
@@ -69,7 +70,7 @@ def editar_estagiario(request, id):
         curso = form_estagiario.cleaned_data["curso"]
 
         estagiario_novo = Estagiario(nome=nome, email=email, telefone=telefone, dt_nascimento=dt_nascimento,
-                                     orgao=orgao, setor=setor, status=status, contrato=contrato,
+                                     orgao=orgao, setor=setor, status=status, contrato=contrato, documento=documento,
                                      n_contrato=n_contrato, inicio_contrato=inicio_contrato, fim_contrato=fim_contrato,
                                      instituicao_edu=instituicao_edu, curso=curso)
         estagiario_service.editar_estagiario(estagiario_bd, estagiario_novo)
