@@ -65,6 +65,6 @@
             <dd>{{ estagiario.curso }}</dd>
         </dl>
 
-        <a href="{% url 'editar_estagiario' estagiario.id %}"><input type="button" class="btn btn-primary mb-3" value="Editar"></a>
+        <a href="{% url 'editar_estagiario' estagiario.pk %}"><input type="button" class="btn btn-primary mb-3" value="Editar"></a>
 
 {% endblock %}
