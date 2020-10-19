@@ -8,9 +8,7 @@ urlpatterns = [
     path('', views.EstagiarioIndex.as_view(), name='index'),
     path('inativos/', views.EstagiarioInativos.as_view(), name='inativos'),
     path('cadastrar_estagiario/', cadastrar_estagiario, name='cadastrar_estagiario'),
-    #path('cadastrar_estagiario/', views.CadastrarEstagiario.as_view(), name='cadastrar_estagiario'),
     path('editar_estagiario/<int:id>', editar_estagiario, name='editar_estagiario'),
-    #path('editar_estagiario/<int:pk>', views.EditarEstagiario.as_view(), name='editar_estagiario'),
     path('<int:estagiario_id>', exibir_estagiario, name='exibir_estagiario'),
 ]
 

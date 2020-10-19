@@ -2,9 +2,7 @@ from datetime import date, timedelta
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.urls import reverse_lazy
 from django.views.generic import ListView
-from django.views.generic.edit import UpdateView
 
 from estagiario.models import Estagiario
 from .entidades import estagiario
