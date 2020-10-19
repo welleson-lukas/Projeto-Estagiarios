@@ -3,6 +3,7 @@ from datetime import date, timedelta
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic import ListView
+from django.views.generic.edit import CreateView
 
 from estagiario.models import Estagiario
 from .entidades import estagiario
@@ -37,6 +38,14 @@ def contrato(request):
     data_atual = date.today()
     estagiarios = Estagiario.objects.all()
     return render(request, 'estagiario/index.html', {'estagiarios': estagiarios, 'data_limite': data_limite, 'data_atual': data_atual})
+
+
+class CadastrarEstagiario(CreateView):
+    model = Estagiario
+    template_name = 'form_estagiario.html'
+    form_class = EstagiarioForm
+    success_url = 'index.html'
+
 
 
 def cadastrar_estagiario(request):
