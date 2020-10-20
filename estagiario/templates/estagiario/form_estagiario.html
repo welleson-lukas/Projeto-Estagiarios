@@ -46,32 +46,32 @@
             {{ form_estagiario.setor|addclass:'form-control' }}
         </div>
         <div class="form-group">
-            {{ form_estagiario.contrato.errors }}
+            {{ form_contrato.contrato.errors }}
             <label>Descrição do contrato</label>
-            {{ form_estagiario.contrato|addclass:'form-control' }}
+            {{ form_contrato.contrato|addclass:'form-control' }}
         </div>
 
         <div class="form">
-            {{ form_estagiario.documento.errors }}
+            {{ form_contrato.documento.errors }}
             <label for="exampleFormControlFile1">Contrato</label>
-            {{ form_estagiario.documento }}
+            {{ form_contrato.documento }}
           </div>
 
         <div class="form-group">
-            {{ form_estagiario.n_contrato.errors }}
+            {{ form_contrato.n_contrato.errors }}
             <label>Número do contrato (CIEE)</label>
-            {{ form_estagiario.n_contrato|addclass:'form-control' }}
+            {{ form_contrato.n_contrato|addclass:'form-control' }}
         </div>
         <div class="form-group">
-            {{ form_estagiario.inicio_contrato.errors }}
+            {{ form_contrato.inicio_contrato.errors }}
             <label>Inicio do contrato</label>
-            {{ form_estagiario.inicio_contrato|addclass:'form-control date-mask' }}
+            {{ form_contrato.inicio_contrato|addclass:'form-control date-mask' }}
         </div>
 
         <div class="form-group">
-            {{ form_estagiario.fim_contrato.errors }}
+            {{ form_contrato.fim_contrato.errors }}
             <label>Fim do contrato</label>
-            {{ form_estagiario.fim_contrato|addclass:'form-control date-mask' }}
+            {{ form_contrato.fim_contrato|addclass:'form-control date-mask' }}
         </div>
 
         <div class="form-group">

@@ -42,13 +42,15 @@ def contrato(request):
 def cadastrar_estagiario(request):
     if request.method == "POST":
         form_estagiario = EstagiarioForm(request.POST, request.FILES)
+
         if form_estagiario.is_valid():
             form_estagiario.save()
             return redirect('index')
 
     else:
         form_estagiario = EstagiarioForm()
-    return render(request, 'estagiario/form_estagiario.html', {"form_estagiario": form_estagiario})
+        form_contrato = ContratoForm()
+    return render(request, 'estagiario/form_estagiario.html', {"form_estagiario": form_estagiario, "form_contrato": form_contrato})
 
 def editar_estagiario(request, id):
     estagiario_bd = estagiario_service.listar_estagiario_id(id)

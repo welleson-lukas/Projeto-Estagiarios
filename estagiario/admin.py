@@ -1,16 +1,6 @@
 from django.contrib import admin
 
-from .models import Estagiario, Contrato
+from .models import Estagiario
 
-class ContratoInLine(admin.TabularInline):
-    model = Contrato
-    extra = 1
+admin.site.register(Estagiario)
 
-class EstagiarioAdmin(admin.ModelAdmin):
-
-    inlines = [
-        ContratoInLine
-    ]
-
-admin.site.register(Estagiario, EstagiarioAdmin)
-admin.site.register(Contrato)
