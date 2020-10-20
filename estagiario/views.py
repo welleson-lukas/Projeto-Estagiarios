@@ -2,10 +2,11 @@ from datetime import date, timedelta
 
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.urls import reverse_lazy
 from django.views.generic import ListView
 
 from estagiario.models import Estagiario
-from .entidades import estagiario
+
 from .services import estagiario_service
 from .forms import EstagiarioForm
 
@@ -49,12 +50,11 @@ def cadastrar_estagiario(request):
 
     else:
         form_estagiario = EstagiarioForm()
-        form_contrato = ContratoForm()
-    return render(request, 'estagiario/form_estagiario.html', {"form_estagiario": form_estagiario, "form_contrato": form_contrato})
+    return render(request, 'estagiario/form_estagiario.html', {"form_estagiario": form_estagiario})
 
 def editar_estagiario(request, id):
     estagiario_bd = estagiario_service.listar_estagiario_id(id)
-    form_estagiario = EstagiarioForm(request.POST or None, instance=estagiario_bd)
+    form_estagiario = EstagiarioForm(request.POST or None, request.FILES or None, instance=estagiario_bd)
     if form_estagiario.is_valid():
         nome = form_estagiario.cleaned_data["nome"]
         email = form_estagiario.cleaned_data["email"]
@@ -64,7 +64,7 @@ def editar_estagiario(request, id):
         setor = form_estagiario.cleaned_data["setor"]
         status = form_estagiario.cleaned_data["status"]
         contrato = form_estagiario.cleaned_data["contrato"]
-        documento = form_estagiario.cleaned_data["contrato"]
+        documento = form_estagiario.cleaned_data["documento"]
         n_contrato = form_estagiario.cleaned_data["n_contrato"]
         inicio_contrato = form_estagiario.cleaned_data["inicio_contrato"]
         fim_contrato = form_estagiario.cleaned_data["fim_contrato"]

@@ -51,27 +51,22 @@
 
             <h2 class="mt-5">Dados do contrato</h2>
 
-            {% for contrato in estagiario.contrato_set.all %}
-
             <dt>Número do contrato</dt>
-            <dd>{{ contrato.n_contrato }}</dd>
+            <dd>{{ estagiario.n_contrato }}</dd>
 
             <dt>Descrição do contrato</dt>
-            <dd>{{ contrato.contrato }}</dd>
+            <dd>{{ estagiario.contrato }}</dd>
 
             <dt>Contrato PDF</dt>
-           <a href="{{ contrato.documento.url }}" target="_blank">Vizualizar Contrato</a>
+           <a href="{{ estagiario.documento.url }}" target="_blank">Vizualizar Contrato</a>
 
             <dt>Inicio do contrato</dt>
-            <dd>{{ contrato.inicio_contrato }}</dd>
+            <dd>{{ estagiario.inicio_contrato }}</dd>
 
             <dt>Fim do contrato</dt>
-            <dd>{{ contrato.fim_contrato }}</dd>
-        {% endfor %}
+            <dd>{{ estagiario.fim_contrato }}</dd>
 
         </dl>
-
-
 
         <a href="{% url 'editar_estagiario' estagiario.pk %}"><input type="button" class="btn btn-primary mb-3" value="Editar"></a>
 

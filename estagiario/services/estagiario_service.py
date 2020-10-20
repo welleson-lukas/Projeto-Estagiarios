@@ -12,6 +12,7 @@ def editar_estagiario(estagiario_bd, estagiario_novo):
     estagiario_bd.dt_nascimento = estagiario_novo.dt_nascimento
     estagiario_bd.status = estagiario_novo.status
     estagiario_bd.contrato = estagiario_novo.contrato
+    estagiario_bd.documento = estagiario_novo.documento
     estagiario_bd.n_contrato = estagiario_novo.n_contrato
     estagiario_bd.inicio_contrato = estagiario_novo.inicio_contrato
     estagiario_bd.fim_contrato = estagiario_novo.fim_contrato
