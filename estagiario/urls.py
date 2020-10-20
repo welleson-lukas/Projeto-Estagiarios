@@ -11,7 +11,6 @@ urlpatterns = [
     path('editar_estagiario/<int:id>', editar_estagiario, name='editar_estagiario'),
     path('<int:estagiario_id>', exibir_estagiario, name='exibir_estagiario'),
 
-    #path('cadastrar_estagiario/', views.CadatrarEstagiario.as_view(), name='cadastrar_estagiario'),
 
 ]
 

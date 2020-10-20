@@ -1,12 +1,10 @@
 from datetime import date, timedelta
-
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
-from django.urls import reverse_lazy
 from django.views.generic import ListView
-
+from django.contrib import messages
 from estagiario.models import Estagiario
-
+from django.db.models import Q, Count, Case, When
 from .services import estagiario_service
 from .forms import EstagiarioForm
 
@@ -17,8 +15,23 @@ class EstagiarioIndex(ListView):
     context_object_name = 'estagiarios'
 
     def get_queryset(self):
+
+        data_limite = date.today() + timedelta(days=20)
+        data_atual = date.today()
+
         qs = super().get_queryset()
         qs = qs.order_by('-id').filter(status=True)
+        qs = qs.annotate(
+            numero_contratos=Count(
+                Case(
+                    When(
+                        fim_contrato__gt=data_atual, fim_contrato__lt=data_limite, then=1
+                    )
+                )
+            )
+        )
+
+        messages.warning(self.request, 'Comentário enviado com sucesso')
 
         return qs
 
@@ -32,12 +45,6 @@ class EstagiarioInativos(ListView):
         qs = qs.order_by('-id').filter(status=False)
 
         return qs
-
-def contrato(request):
-    data_limite = date.today() + timedelta(days=10)
-    data_atual = date.today()
-    estagiarios = Estagiario.objects.all()
-    return render(request, 'estagiario/index.html', {'estagiarios': estagiarios, 'data_limite': data_limite, 'data_atual': data_atual})
 
 
 def cadastrar_estagiario(request):
