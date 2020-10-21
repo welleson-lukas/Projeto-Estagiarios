@@ -2,72 +2,99 @@
 
 {% block conteudo %}
 
-        <h2 class="mt-5">Dados pessoais</h2>
-        <dl>
-            <dt>Nome</dt>
-            <dd>{{ estagiario.nome }}</dd>
+    <div class="row detalhes-estagiario">
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">Dados pessoais</div>
+                <div class="card-body cards-detalhes-body">
+                    <dl>
+                        <dt>Nome</dt>
+                        <dd>{{ estagiario.nome }}</dd>
 
-            <dt>CPF</dt>
-            <dd>{{ estagiario.cpf }}</dd>
+                        <dt>CPF</dt>
+                        <dd>{{ estagiario.cpf }}</dd>
 
-            <dt>Email</dt>
-            <dd>{{ estagiario.email }}</dd>
+                        <dt>Email</dt>
+                        <dd>{{ estagiario.email }}</dd>
 
-            <dt>Telefone</dt>
-            <dd>{{ estagiario.telefone }}</dd>
+                        <dt>Telefone</dt>
+                        <dd>{{ estagiario.telefone }}</dd>
 
-            <dt>Data de nascimento</dt>
-            <dd>{{ estagiario.dt_nascimento }}</dd>
-        </dl>
+                        <dt>Data de nascimento</dt>
+                        <dd>{{ estagiario.dt_nascimento }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
 
-        <h2 class="mt-5">Dados acadêmicos</h2>
-        <dl>
-            <dt>Instituição de ensino</dt>
-            <dd>{{ estagiario.instituicao_edu }}</dd>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">Dados do contrato</div>
+                <div class="card-body">
+                    <dl>
+                        <dt>Número do contrato</dt>
+                        <dd>{{ estagiario.n_contrato }}</dd>
 
-            <dt>Curso</dt>
-            <dd>{{ estagiario.curso }}</dd>
-        </dl>
+                        <dt>Descrição do contrato</dt>
+                        <dd>{{ estagiario.contrato }}</dd>
 
-        <h2 class="mt-5">Dados do estágio</h2>
-        <dl>
-            <dt>Orgão</dt>
-            <dd>{{ estagiario.orgao }}</dd>
+                        <dt>Contrato PDF</dt>
+                        <dd><a href="{{ estagiario.documento.url }}" target="_blank">Vizualizar Contrato</a></dd>
 
-            <dt>Setor</dt>
-            <dd>{{ estagiario.setor }}</dd>
+                        <dt>Inicio do contrato</dt>
+                        <dd>{{ estagiario.inicio_contrato }}</dd>
 
-            <dt>Status</dt>
-            {% if estagiario.status == True %}
-            <dd>Ativo</dd>
-            {% endif %}
+                        <dt>Fim do contrato</dt>
+                        <dd>{{ estagiario.fim_contrato }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
 
-            {% if estagiario.status == False %}
-            <dd>Inativo</dd>
-            {% endif %}
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">Dados acadêmicos</div>
+                <div class="card-body">
+                    <dl>
+                        <dt>Instituição de ensino</dt>
+                        <dd>{{ estagiario.instituicao_edu }}</dd>
 
-            <dt>Data de cadastro</dt>
-            <dd>{{ estagiario.dt_cadastro }}</dd>
+                        <dt>Curso</dt>
+                        <dd>{{ estagiario.curso }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
 
-            <h2 class="mt-5">Dados do contrato</h2>
+        <div class="col-6">
+            <div class="card">
+                <div class="card-header">Dados do estágio</div>
+                <div class="card-body">
+                    <dl>
+                        <dt>Orgão</dt>
+                        <dd>{{ estagiario.orgao }}</dd>
 
-            <dt>Número do contrato</dt>
-            <dd>{{ estagiario.n_contrato }}</dd>
+                        <dt>Setor</dt>
+                        <dd>{{ estagiario.setor }}</dd>
 
-            <dt>Descrição do contrato</dt>
-            <dd>{{ estagiario.contrato }}</dd>
+                        <dt>Status</dt>
+                        {% if estagiario.status == True %}
+                        <dd>Ativo</dd>
+                        {% endif %}
 
-            <dt>Contrato PDF</dt>
-           <a href="{{ estagiario.documento.url }}" target="_blank">Vizualizar Contrato</a>
+                        {% if estagiario.status == False %}
+                        <dd>Inativo</dd>
+                        {% endif %}
 
-            <dt>Inicio do contrato</dt>
-            <dd>{{ estagiario.inicio_contrato }}</dd>
+                        <dt>Data de cadastro</dt>
+                        <dd>{{ estagiario.dt_cadastro }}</dd>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
 
-            <dt>Fim do contrato</dt>
-            <dd>{{ estagiario.fim_contrato }}</dd>
-
-        </dl>
-
-        <a href="{% url 'editar_estagiario' estagiario.pk %}"><input type="button" class="btn btn-primary mb-3" value="Editar"></a>
+    <a class="botao-editar btn btn-primary" href="{% url 'editar_estagiario' estagiario.pk %}"><i class="far fa-edit"></i>  Editar</a>
+    <a class="botao-voltar btn btn-primary" href="{% url 'index' %}"><i class="fas fa-chevron-left"></i>  Voltar</a>
 
 {% endblock %}

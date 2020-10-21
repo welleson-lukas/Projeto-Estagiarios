@@ -16,6 +16,11 @@ body{
     color: #FFFFFF;
 }
 
+/* CONTEUDO */
+.estagiarios-ativos{
+    text-align: right;
+
+}
 
 /* TABELA */
 .tabela {
@@ -91,4 +96,37 @@ footer{
 a.links-footer{
     color: white;
     text-decoration: none;
+}
+
+/* DETALHES DO ESTAGIARIO */
+
+.card{
+    margin-top: 25px;
+}
+.card-header{
+    background-color: #1b3280;
+    color: #FFFFFF;
+    font-size: 18px;
+    font-weight: bold;
+}
+.card-body{
+    background-color: #DCDCDC;
+}
+
+.botao-editar{
+    background-color: #1b3280;
+    color: #FFFFFF;
+    border-color: #1b3280;
+}
+
+.botao-voltar{
+    background-color: #DCDCDC;
+    color: #1b3280;
+    border-color: #DCDCDC;
+}
+
+.botao-cadastrar{
+    background-color: #1b3280;
+    color: #FFFFFF;
+    border-color: #1b3280;
 }

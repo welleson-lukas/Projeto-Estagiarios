@@ -3,9 +3,13 @@
 {% block conteudo %}
     <br>
     <h3>Estagiarios Inativos</h3>
-    <br>
 
-    <div class="col-md-12">
+    <div class="container">
+
+        <div class="d-flex flex-row-reverse">
+          <div class="p-2"><h5 class="estagiarios-ativos">Estagiários Inativos: {{ estagiarios.count }}</h5></div>
+        </div>
+
         <table class="table table-bordered tabela">
             <div class="tabela-head d-flex justify-content-center">Estagiários</div>
             <thead>
@@ -55,13 +59,12 @@
 
             </tbody>
         </table>
+
+        <a class="botao-voltar btn btn-primary" href="{% url 'index' %}"><i class="fas fa-chevron-left"></i>  Voltar</a>
+
+
     </div>
 
-    <div class="">
-        <h5>Estagiários Inativos: {{ estagiarios.count }}</h5>
-    </div>
-
-    <a href="{% url 'cadastrar_estagiario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>
 
 
   {% endblock %}
