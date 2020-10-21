@@ -10,32 +10,40 @@
             <div class="d-flex justify-content-center" style="background-color: #1b3280; color: #FFFFFF">Estagiários</div>
             <thead style="background-color: #A9A9A9">
                 <tr>
-                    <th scope="col">Contrato</th>
                     <th scope="col">Nome</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Término</th>
-                    <th scope="col">Situação</th>
-                    <th scope="col">-</th>
+                    <th scope="col">Contrato</th>
+                    <th scope="col">Setor</th>
+                    <th scope="col">IES</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 {% for estagiario in estagiarios %}
                 <tr>
 
-                    <td>{{ estagiario.n_contrato }}</td></th>
                     <td>{{ estagiario.nome }}</td>
-                    <td>{{ estagiario.inicio_contrato }}</td>
-                    <td>{{ estagiario.fim_contrato }}</td>
+                    <td>{{ estagiario.n_contrato }}</td></th>
+                    <td>{{ estagiario.setor }}</td>
+                    <td>{{ estagiario.instituicao_edu }}</td>
 
-                    {% if estagiario.status == True %}
-                    <td>Ativo</td>
-                    {% endif %}
-
+                    <td>
                     {% if estagiario.status == False %}
-                    <td>Inativo</td>
+                    <i class="fas fa-ban"></i>
+                    {% endif %}
+                    <!--<i class="icone-card fas fa-ban"></i>-->
+
+                    {% if estagiario.numero_contratos == 1 %}
+                    <i class="fas fa-exclamation-triangle"></i>
                     {% endif %}
 
-                    <td><a href="{% url 'exibir_estagiario' estagiario.id %}">Detalhes</a></td>
+                    <a href="{{ estagiario.documento.url }}" target="_blank"><i class="fas fa-file-pdf"></i></a>
+                    </td>
+
+                    <td>
+                        <a href="{% url 'exibir_estagiario' estagiario.id %}"><i class="fas fa-id-badge"></i>  Detalhes</a>
+                        <a href="{% url 'editar_estagiario' estagiario.pk %}"><i class="fas fa-edit"></i>  Editar</a>
+                    </td>
 
                 </tr>
 
@@ -48,6 +56,8 @@
     <div class="">
         <h5>Estagiários Inativos: {{ estagiarios.count }}</h5>
     </div>
+
+    <a href="{% url 'cadastrar_estagiario' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar"></a>
 
 
   {% endblock %}

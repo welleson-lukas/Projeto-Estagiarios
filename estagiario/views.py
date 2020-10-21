@@ -31,8 +31,6 @@ class EstagiarioIndex(ListView):
             )
         )
 
-        messages.warning(self.request, 'Comentário enviado com sucesso')
-
         return qs
 
 class EstagiarioInativos(ListView):
@@ -41,8 +39,20 @@ class EstagiarioInativos(ListView):
     context_object_name = 'estagiarios'
 
     def get_queryset(self):
+        data_limite = date.today() + timedelta(days=20)
+        data_atual = date.today()
+
         qs = super().get_queryset()
         qs = qs.order_by('-id').filter(status=False)
+        qs = qs.annotate(
+            numero_contratos=Count(
+                Case(
+                    When(
+                        fim_contrato__gt=data_atual, fim_contrato__lt=data_limite, then=1
+                    )
+                )
+            )
+        )
 
         return qs
 

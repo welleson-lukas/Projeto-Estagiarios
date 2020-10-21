@@ -2,9 +2,6 @@
 
 {% block conteudo %}
     <br>
-
-{% include 'parciais/_messages.html' %}
-
     <div class="col-md-12">
         <table class="table table-bordered" style="background-color: #DCDCDC">
             <div class="d-flex justify-content-center" style="background-color: #1b3280; color: #FFFFFF">Estagiários</div>
@@ -12,10 +9,10 @@
                 <tr>
                     <th scope="col">Nome</th>
                     <th scope="col">Contrato</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Término</th>
-                    <th scope="col">Situação</th>
-                    <th scope="col">-</th>
+                    <th scope="col">Setor</th>
+                    <th scope="col">IES</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Ações</th>
                 </tr>
             </thead>
             <tbody>
@@ -24,28 +21,28 @@
 
                     <td>{{ estagiario.nome }}</td>
                     <td>{{ estagiario.n_contrato }}</td></th>
-                    <td>{{ estagiario.inicio_contrato }}</td>
-                    <td>{{ estagiario.fim_contrato }}</td>
+                    <td>{{ estagiario.setor }}</td>
+                    <td>{{ estagiario.instituicao_edu }}</td>
 
                     <td>
                     {% if estagiario.status == True %}
-                    <i class="icone-card fas fa-check-circle"></i>
-                    <i class="icone-card fas fa-desktop"></i>
-                    <i class="icone-card fas fa-desktop"></i>
-                    <i class="icone-card fas fa-desktop"></i>
-
+                    <i class="fas fa-check-circle"></i>
                     {% endif %}
+
+                    {% if estagiario.numero_contratos == 1 %}
+                    <i class="fas fa-exclamation-triangle"></i>
+                    {% endif %}
+
+                    <a href="{{ estagiario.documento.url }}" target="_blank"><i class="fas fa-file-pdf"></i></a>
                     </td>
 
-
-                    {% if estagiario.status == False %}
-                    <td>Inativo</td>
-                    {% endif %}
-
-                    <td><a href="{% url 'exibir_estagiario' estagiario.id %}">Detalhes</a></td>
+                    <td>
+                        <a href="{% url 'exibir_estagiario' estagiario.id %}"><i class="fas fa-id-badge"></i>  Detalhes</a>
+                        <a href="{% url 'editar_estagiario' estagiario.pk %}"><i class="fas fa-edit"></i>  Editar</a>
+                    </td>
 
                 </tr>
-<h1>{{ estagiario.numero_contratos }}</h1>
+
                 {% endfor %}
 
             </tbody>
