@@ -1,0 +1,94 @@
+html{
+
+}
+
+body{
+
+}
+/* NAV */
+.navbar{
+    background-color: #1b3280;
+    color: #FFF;
+    height: 66px
+}
+
+.nav-link{
+    color: #FFFFFF;
+}
+
+
+/* TABELA */
+.tabela {
+    background-color: #DCDCDC;
+}
+.tabela-head {
+    background-color: #1b3280;
+    color: #FFFFFF;
+}
+thead{
+    background-color: #A9A9A9
+}
+.fa-check-circle {
+    color: green;
+}
+
+.fa-ban{
+    color: darkred;
+}
+
+.fa-exclamation-triangle{
+    color: #ff8c00 ;
+    opacity: 1;
+}
+@keyframes anima {
+    to {
+        opacity:0;
+    }
+}
+td {
+    cursor: pointer;
+}
+.fa-exclamation-triangle{
+    animation: anima 900ms ease infinite;
+}
+
+.fa-clock{
+    color: #ff8c00 ;
+}
+
+.fa-file-pdf{
+    color: #831d1c;
+}
+
+.link-detalhes{
+    text-decoration: none;
+    color: black;
+    margin-right: 10px;
+}
+
+.link-editar{
+    text-decoration: none;
+    color: black;
+}
+
+
+/* FOOTER */
+footer{
+    margin-top: auto;
+    background-color: #1b3280;
+    position:relative;
+    width:100%;
+    padding: 30px 0px;
+    line-height: 1.15;
+    text-align: center;
+    border: 0;
+    height: auto;
+}
+
+.footer-conteudo{
+    color: #FFFFFF;
+}
+a.links-footer{
+    color: white;
+    text-decoration: none;
+}

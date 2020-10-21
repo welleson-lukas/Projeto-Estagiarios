@@ -15,19 +15,28 @@ class EstagiarioIndex(ListView):
     context_object_name = 'estagiarios'
 
     def get_queryset(self):
-
-        data_limite = date.today() + timedelta(days=20)
-        data_atual = date.today()
+        data_limite = date.today() + timedelta(days=21)
+        data_atual = date.today() - timedelta(days=1)
+        data_ontem = date.today()
 
         qs = super().get_queryset()
         qs = qs.order_by('-id').filter(status=True)
         qs = qs.annotate(
-            numero_contratos=Count(
+            avencer=Count(
                 Case(
                     When(
                         fim_contrato__gt=data_atual, fim_contrato__lt=data_limite, then=1
                     )
+
                 )
+            ),
+            vencidos=Count(
+                Case(
+                    When(
+                        fim_contrato__lt=data_ontem, then=1
+                    )
+                )
+
             )
         )
 
@@ -39,18 +48,27 @@ class EstagiarioInativos(ListView):
     context_object_name = 'estagiarios'
 
     def get_queryset(self):
-        data_limite = date.today() + timedelta(days=20)
-        data_atual = date.today()
+        data_limite = date.today() + timedelta(days=21)
+        data_atual = date.today() - timedelta(days=1)
+        data_ontem = date.today()
 
         qs = super().get_queryset()
         qs = qs.order_by('-id').filter(status=False)
         qs = qs.annotate(
-            numero_contratos=Count(
+            avencer=Count(
                 Case(
                     When(
                         fim_contrato__gt=data_atual, fim_contrato__lt=data_limite, then=1
                     )
                 )
+            ),
+            vencidos=Count(
+                Case(
+                    When(
+                        fim_contrato__lt=data_ontem, then=1
+                    )
+                )
+
             )
         )
 
